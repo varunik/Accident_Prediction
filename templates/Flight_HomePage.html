@@ -1,0 +1,210 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Price Prediction</title>
+
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/css/styles.css">
+
+
+</head>
+
+<body>
+
+    <!-- As a heading -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">FLIGHT ACCIDENT SEVERITY</a>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br>
+
+
+    <div class="container">
+
+
+
+         <form action="{{ url_for('predict')}}"method="post">
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Safety Score</h5>
+                            <!-- Departure -->
+                            <input type="text" name="Safety_Score" id="Safety_Score" placeholder = "1-100" required="required">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Days Since Inspection</h5>
+                            <!-- Arrival -->
+                            <input type="text" name="Days_Since_Inspection" id="Days_Since_Inspection" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<br>
+            <br>
+            <br>
+			
+			<div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Safety Complaints</h5>
+                            <!-- Departure -->
+                            <input type="text" name="Total_Safety_Complaints" id="Total_Safety_Complaints" required="required">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Control Metric</h5>
+                            <!-- Arrival -->
+                            <input type="text" name="Control_Metric" id="Control_Metric" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+			
+			<div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Turbulence_In_gforces</h5>
+                            <!-- Departure -->
+                            <input type="text" name="Turbulence_In_gforces" id="Turbulence_In_gforces" required="required">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Cabin Temperature</h5>
+                            <!-- Arrival -->
+                            <input type="text" name="Cabin_Temperature" id="Cabin_Temperature" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<br>
+            <br>
+            <br>
+			
+			<div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Accident Type Code</h5>
+                            <!-- Departure -->
+                            <input type="text" name="Accident_Type_Code" id="Accident_Type_Code" required="required">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Max Elevation</h5>
+                            <!-- Arrival -->
+                            <input type="text" name="Max_Elevation" id="Max_Elevation" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<br>
+            <br>
+            <br>
+			
+			<div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Violations</h5>
+                            <!-- Departure -->
+                            <input type="text" name="Violations" id="Violations" required="required">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Adverse Weather Metric</h5>
+                            <!-- Arrival -->
+                            <input type="text" name="Adverse_Weather_Metric" id="Adverse_Weather_Metric" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<br>
+			<br>
+			<br>	
+
+            <!-- Submit -->
+			<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+            
+        </form>
+
+        <br>
+        <br>
+        <h3>{{ prediction_text }}</h3>
+
+        <br>
+        <br>
+
+    </div>
+
+
+
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
