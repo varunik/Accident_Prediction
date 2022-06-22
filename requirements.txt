@@ -1,6 +1,6 @@
 pandas==0.24.2
 Cython==0.29.14
-numpy==1.17.3
+numpy==1.22.0
 scipy==1.2.1
 matplotlib==2.2.4
 jinja2==2.10	
